@@ -1,0 +1,23 @@
+index:
+    path: /
+    controller: App\Controller\EventsController::index
+
+create:
+    path: /add
+    controller: App\Controller\EventsController::create
+
+edit:
+    path: /edit/{id}
+    controller: App\Controller\EventsController::edit
+
+delete:
+    path: /delete/{id}
+    controller: App\Controller\EventsController::delete
+
+details:
+    path: /details/{id}
+    controller: App\Controller\EventsController::details
+
+eventsFilt:
+    path: /{type}
+    controller: App\Controller\EventsController::indexFilt

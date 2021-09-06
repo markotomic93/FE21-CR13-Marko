@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to Big Events{% endblock %}
+
+{% block body %}
+
+<section id="events">
+    <div class="container mt-3 mb-3">
+        <h2 class="text-center m-5"> Welcome to our site, <br> we do hope that you can find <br> something that is going to be interresting to you.</h2>
+        <div class="d-flex justify-content-end mt-5 mb-5">
+            <button id="btnGroup" type="button" class="btn btn-outline-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Choose Event Type          
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="btnGroup">
+                <li><a class="dropdown-item" href="/">All</a></li>
+                <li><a class="dropdown-item" href="/sport">Sport</a></li>
+                <li><a class="dropdown-item" href="/music">Music</a></li>
+                <li><a class="dropdown-item" href="/movie">Movie</a></li>
+                <li><a class="dropdown-item" href="/theater">Theater</a></li>
+            </ul>
+        </div>
+        <hr>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+            {% for event in eventsAll %}
+            <div class="col">
+                <div class="card h-100 mb-5 ">
+                <img src="{{event.image}}" class="card-img-top style" alt="{{ event.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event.name }}</h5>
+                        <p class="card-text">{{event.description}}</p>
+                        <div class="m-3">
+                            <p class="card-text m-0">Date: {{event.dateTime | date('d/m/Y ')}}</p>
+                            <p class="card-text m-0">Time: {{event.dateTime | date('H:i')}} </p>
+                        </div>                       
+                        <div>
+                            <a href="/details/{{event.id}}" class="btn btn-dark">Details</a>
+                            <a href="/edit/{{event.id}}" class="btn btn-dark">Edit</a>
+                            <a href="/delete/{{event.id}}" onclick="return confirm('Confirm to delete')" class="btn btn-dark">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            {% endfor %}
+            
+        </div>
+        <hr>
+    </div>
+</section>
+{% endblock %}
